@@ -1,0 +1,53 @@
+{
+    "extends": [
+      "react-app",
+      "airbnb",
+      "plugin:jsx-a11y/recommended"
+    ],
+    "plugins": [
+      "jsx-a11y"
+    ],
+    "rules": {
+      "indent": ["error", 4],
+      "eqeqeq": ["error", "smart"],
+      "no-undef": "off",
+      "no-alert": "off",
+      "arrow-parens": ["error", "always"],
+      "arrow-body-style": "off",
+      "import/no-extraneous-dependencies": "off",
+      "import/extensions": "off",
+      "import/no-unresolved": "off",
+      "react/forbid-prop-types": "off",
+      "react/jsx-indent": ["error", 4],
+      "react/jsx-indent-props": ["error", 4],
+      "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+      "react/no-multi-comp": "off",
+      "react/sort-comp": ["off"],
+      "react/jsx-wrap-multilines": ["error", { "arrow": true, "assignment": true, "declaration": true, "return": true }],
+      "jsx-a11y/no-static-element-interactions": "off",
+      "jsx-a11y/no-autofocus": "off",
+      "jsx-a11y/label-has-for": "off",
+      "jsx-a11y/media-has-caption": "off",
+      "jsx-a11y/no-noninteractive-tabindex": "off",
+      "class-methods-use-this": ["off"],
+      "no-underscore-dangle": ["off"],
+      "camelcase": ["off"],
+      "max-len": ["off"],
+      "react/no-access-state-in-setstate": ["off"],
+      "react/jsx-props-no-spreading": ["off"],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "object-curly-newline": ["off"],
+      "global-require": 0,
+      "react/prop-types": ["error", { "ignore": ["navigation"] }],
+      "react/destructuring-assignment": ["off"],
+      "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
+      "no-shadow": ["off"],
+      "no-use-before-define": ["error", { "variables": false }],
+      "jsx-a11y/href-no-hash": ["off"],
+      "import/no-cycle": ["off"],
+      "jsx-a11y/click-events-have-key-events": ["off"],
+      "jsx-a11y/label-has-associated-control": ["off"],
+      "linebreak-style": 0
+    }
+  }

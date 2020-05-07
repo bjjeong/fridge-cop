@@ -37,3 +37,19 @@
     transform: translateY(0px)
   }
 }
+
+.slide-enter {
+  transform: translateX(-100vw);
+  opacity: 0;
+  position: absolute;
+  
+}
+
+.bp3-input {
+  border-radius: 30px;
+  padding: 3px 10px;
+}
+
+.bp3-form-helper-text {
+  margin-left: 15px;
+}
