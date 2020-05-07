@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './pages/Home';
 import withNavbar from './features/withNavbar';
+import Home from './pages/Home/Home';
+import About from './pages/About';
 
 function RouteWithSubRoutes(route) {
     return (
@@ -33,7 +34,7 @@ const routes = [
         path: '/about',
         key: 'ABOUT',
         exact: true,
-        component: withNavbar(Home),
+        component: withNavbar(About),
     },
     {
         path: '/app',

@@ -10,11 +10,13 @@ const Navbar = () => {
             <Nav style={styles.container}>
                 <Nav.Group align="left">
                     <Nav.Heading>
-                        <div
-                            style={{ ...styles.navText, fontSize: 18 }}
-                        >
-                            Fridge Inspector
-                        </div>
+                        <NavLink to="/">
+                            <div
+                                style={{ ...styles.navText }}
+                            >
+                                Fridge Inspector
+                            </div>
+                        </NavLink>
                     </Nav.Heading>
                 </Nav.Group>
                 <Nav.Group align="right">
@@ -46,7 +48,7 @@ styles.container = {
 };
 
 styles.navText = {
-    fontSize: 18,
+    fontSize: 'calc(10px + 1vmin)',
     fontWeight: '600',
     color: '#004968',
     fontFamily: 'Maison,sans-serif',
