@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "89a640b38aa1a5da68d5b3ac22b28cbe",
+    "revision": "51aa6b09d30e3128189b34bbb486590b",
     "url": "/fridge-cop/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fridge-cop/static/css/2.4d0df213.chunk.css"
   },
   {
-    "revision": "3e95dba8ea1228f4f797",
+    "revision": "600dfb51c48006f78a10",
     "url": "/fridge-cop/static/css/main.427648f7.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fridge-cop/static/js/2.166fa1d8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3e95dba8ea1228f4f797",
-    "url": "/fridge-cop/static/js/main.005b4d71.chunk.js"
+    "revision": "600dfb51c48006f78a10",
+    "url": "/fridge-cop/static/js/main.51c59e51.chunk.js"
   },
   {
     "revision": "7c51f88d2a7a7447f20a",
