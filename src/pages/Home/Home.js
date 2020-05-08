@@ -17,7 +17,7 @@ const Home = () => {
     const [moveUp, setMoveUp] = useState(results.length);
 
     const tagRef = useRef();
-    const config = { mass: 5, tension: 2000, friction: 500 };
+    const config = { mass: 5, tension: 2000, friction: 250 };
     const trail = useTrail(results.length, {
         config,
         opacity: results.length > 0 ? 1 : 0,
@@ -77,6 +77,9 @@ const Home = () => {
                     />
                     <span>&nbsp;today?</span>
                 </div>
+                <span style={styles.subtitleText}>
+                    Create something delicious with what you have at home!
+                </span>
                 <FormGroup helperText="Press comma or Enter to add ingredients" style={styles.inputContainer}>
                     <TagInput
                         style={styles.input}
@@ -131,6 +134,14 @@ styles.titleContainer = {
     display: 'flex',
     flexDirection: 'row',
     fontSize: 'calc(5px + 5vmin)',
+    fontFamily: 'Maison,sans-serif',
+    fontWeight: 800,
+    color: '#004968',
+    marginBottom: 'calc(1vmin)',
+};
+
+styles.subtitleText = {
+    fontSize: 'calc(7px + 1vmin)',
     fontFamily: 'Maison,sans-serif',
     fontWeight: 800,
     color: '#004968',

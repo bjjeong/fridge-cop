@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import withNavbar from './features/withNavbar';
 import Home from './pages/Home/Home';
 import About from './pages/About';
+import RecipeView from './pages/RecipeView/RecipeView';
 
 function RouteWithSubRoutes(route) {
     return (
@@ -37,21 +38,21 @@ const routes = [
         component: withNavbar(About),
     },
     {
-        path: '/explore',
-        key: 'EXPLORE',
+        path: '/recipes',
+        key: 'RECIPES',
         component: RenderRoutes,
         routes: [
             {
-                path: '/explore',
-                key: 'EXPLORE_ROOT',
+                path: '/recipes',
+                key: 'RECIPES_ROOT',
                 exact: true,
                 component: withNavbar(Home),
             },
             {
-                path: '/app/page',
-                key: 'APP_PAGE',
+                path: '/recipes/:id',
+                key: 'RECIPE_PAGE',
                 exact: true,
-                component: () => <h1>App Page</h1>,
+                component: withNavbar(RecipeView),
             },
         ],
     },
