@@ -17,14 +17,18 @@
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
     "react-typed": "^1.2.0",
+    "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "serve": "^11.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,7 +46,11 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3"
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^4.0.0"
   }
 }

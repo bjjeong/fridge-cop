@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { Navbar as Nav, Button, AnchorButton, Icon } from '@blueprintjs/core';
-import routes from '../routes';
+import { Navbar as Nav, AnchorButton, Icon } from '@blueprintjs/core';
+import iconLinkedin from './icon-linkedin.svg';
+import iconGitHub from './icon-github.svg';
+import iconInstagram from './icon-instagram.svg';
 
 const Navbar = () => {
     return (
@@ -15,25 +16,32 @@ const Navbar = () => {
                                 style={{ ...styles.navText }}
                             >
                                 <Icon icon="search" style={{ marginRight: 8 }} />
-                                Fridge Cop
+                                fridge cop
                             </div>
                         </NavLink>
                     </Nav.Heading>
                 </Nav.Group>
                 <Nav.Group align="right">
-                    <NavLink to="/about">
-                        <Button
-                            text="About"
-                            minimal
-                            style={styles.navText}
-                        />
-                    </NavLink>
                     <AnchorButton
-                        href="https://linkedin.com/in/bjjeong"
+                        href="https://www.linkedin.com/in/bjjeong/"
                         target="_blank"
-                        text="Contact"
+                        title="LinkedIn"
+                        icon={<img alt="LinkedIn" src={iconLinkedin} />}
                         minimal
-                        style={styles.navText}
+                    />
+                    <AnchorButton
+                        href="https://github.com/bjjeong/"
+                        target="_blank"
+                        title="GitHub"
+                        icon={<img alt="GitHub" src={iconGitHub} />}
+                        minimal
+                    />
+                    <AnchorButton
+                        href="https://www.instagram.com/bjjeong/"
+                        target="_blank"
+                        title="Instagram"
+                        icon={<img alt="Instagram" src={iconInstagram} />}
+                        minimal
                     />
                 </Nav.Group>
             </Nav>

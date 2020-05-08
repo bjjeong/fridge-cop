@@ -11,6 +11,11 @@ export const fetchRecipes = (ingredients) => axios.get(
     },
 );
 
-export const fetchRecipe = (recipeId) => axios.get(
-
+export const fetchRecipeById = (recipeId) => axios.get(
+    `https://api.spoonacular.com/recipes/${recipeId}/information`, {
+        params: {
+            includeNutrition: false,
+            apiKey: process.env.REACT_APP_RECIPE_API_KEY,
+        },
+    },
 );

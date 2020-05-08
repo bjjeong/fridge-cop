@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { animated, useSpring } from 'react-spring';
+import { Link } from 'react-router-dom';
 import { Card, Button } from '@blueprintjs/core';
 import { capitalize } from '../../../utils/helpers';
+import Image from '../../../components/image/Image';
 
 const RecipeListItem = ({ recipe, animationStyles }) => {
     const [flipped, setFlipped] = useState(false);
@@ -20,18 +22,13 @@ const RecipeListItem = ({ recipe, animationStyles }) => {
     const flipForward = { opacity, transform: transform.interpolate((t) => `${t} rotateX(180deg)`) };
     const AnimatedCard = animated(Card);
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
-
     return (
         <animated.div
             style={{ ...animationStyles, ...styles.container }}
             onClick={() => setFlipped(!flipped)}
         >
-            <AnimatedCard interactive style={{ ...flipBack, ...styles.card, zIndex: 2 }}>
-                <img src={image} alt={title} style={styles.imgContainer} />
+            <AnimatedCard interactive style={{ ...flipBack, ...styles.card, zIndex: flipped ? 0 : 2 }}>
+                <Image src={image} alt={title} style={styles.imgContainer} />
                 <div style={styles.topSection}>
                     <h2 style={styles.titleText}>{title}</h2>
                 </div>
@@ -42,18 +39,19 @@ const RecipeListItem = ({ recipe, animationStyles }) => {
                     <Button
                         text="View Ingredients"
                         onClick={() => setFlipped(!flipped)}
-                        style={styles.viewButton}
+                        style={{ ...styles.viewButton, marginTop: 20 }}
                         outlined
                     />
-                    <Button
-                        text="View Recipe"
-                        onClick={handleClick}
-                        style={styles.viewButton}
-                        outlined
-                    />
+                    <Link to={`/recipes/${recipe.id}`}>
+                        <Button
+                            text="View Recipe"
+                            style={{ ...styles.viewButton, marginTop: 10 }}
+                            outlined
+                        />
+                    </Link>
                 </div>
             </AnimatedCard>
-            <AnimatedCard interactive style={{ ...flipForward, ...styles.card, overflow: 'scroll' }}>
+            <AnimatedCard interactive style={{ ...flipForward, ...styles.card }}>
                 <div style={{ ...styles.topSection, padding: '0' }}>
                     <h2 style={styles.titleText}>Ingredients</h2>
                 </div>
@@ -138,8 +136,8 @@ styles.ingredientsContainer = {
 };
 
 styles.viewButton = {
-    marginTop: 20,
-    padding: '10px 50px',
+    padding: '10px 0px',
+    width: 180,
 };
 
 styles.titleText = {
