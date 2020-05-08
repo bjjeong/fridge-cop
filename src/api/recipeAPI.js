@@ -6,7 +6,8 @@ export const fetchRecipes = (ingredients) => axios.get(
             ingredients,
             number: 25,
             ignorePantry: true,
-            apiKey: process.env.REACT_APP_RECIPE_API_KEY,
+            apiKey: '68e3bc5eaf6a4f2b8e0504037492d894',
+            // apiKey: process.env.REACT_APP_RECIPE_API_KEY,
         },
     },
 );
