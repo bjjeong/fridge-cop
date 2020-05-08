@@ -8,405 +8,6 @@ import cx from 'classnames';
 import RecipeListItem from './components/RecipeListItem';
 import { getRecipes, clearRecipes } from '../../actions/recipeActions';
 
-const results1 = [
-    {
-        id: 47950,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19334,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Cinnamon Apple Crisp Crisp Crisp Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9003,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-    {
-        id: 47951,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19335,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Cinnamon Pineapple Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9004,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-    {
-        id: 47952,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19336,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Sugar Apple Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9005,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-    {
-        id: 47950,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19334,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Cinnamon Apple Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9003,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-    {
-        id: 47951,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19335,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Cinnamon Pineapple Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9004,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-    {
-        id: 47952,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19336,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Sugar Apple Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9005,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-    {
-        id: 47950,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19334,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Cinnamon Apple Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9003,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-    {
-        id: 47951,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19335,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Cinnamon Pineapple Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9004,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-    {
-        id: 47952,
-        image: 'https://spoonacular.com/recipeImages/47950-312x231.jpg',
-        imageType: 'jpg',
-        likes: 35,
-        missedIngredientCount: 3,
-        missedIngredients: [
-            {
-                aisle: 'Baking',
-                amount: 0.75,
-                id: 19336,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg',
-                meta: ['packed'],
-                metaInformation: ['packed'],
-                name: 'brown sugar',
-                original: '3/4 cup firmly packed brown sugar',
-                originalName: 'firmly packed brown sugar',
-                originalString: '3/4 cup firmly packed brown sugar',
-                unit: 'cup',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-        title: 'Sugar Apple Crisp',
-        unusedIngredients: [],
-        usedIngredientCount: 2,
-        usedIngredients: [
-            {
-                aisle: 'Produce',
-                amount: 6,
-                id: 9005,
-                image: 'https://spoonacular.com/cdn/ingredients_100x100/apple.jpg',
-                meta: ['cored', 'peeled', 'sliced'],
-                metaInformation: ['cored', 'peeled', 'sliced'],
-                name: 'apples',
-                original: '6 medium (6 cups) apples, peeled, cored, sliced',
-                originalName: 'medium apples, peeled, cored, sliced',
-                originalString: '6 medium (6 cups) apples, peeled, cored, sliced',
-                unit: 'cups',
-                unitLong: 'cups',
-                unitShort: 'cup',
-            },
-        ],
-    },
-];
-
 const Home = () => {
     const results = useSelector((state) => state.recipes.recipes);
     const dispatch = useDispatch();
@@ -433,9 +34,9 @@ const Home = () => {
         }
     };
 
-    const handleChange = (item) => {
-        setIngredients(item);
-    };
+    const handleClearText = () => setIngredients([]);
+
+    const handleChange = (item) => setIngredients(item);
 
     const handleSearch = async () => {
         setIsLoading(true);
@@ -480,12 +81,19 @@ const Home = () => {
                     <TagInput
                         style={styles.input}
                         ref={tagRef}
-                        placeholder="Apples, oranges, grapes"
+                        placeholder="Turkey, spinach, cheese..."
                         values={ingredients}
                         onChange={handleChange}
                         onKeyDown={handleKeyDown}
                         tagProps={{ minimal: true, round: true }}
                         inputProps={{ onFocus: handleFocus, onBlur: handleBlur }}
+                        rightElement={
+                            <Button
+                                onClick={handleClearText}
+                                icon="cross"
+                                minimal
+                            />
+                        }
                         large
                     />
                 </FormGroup>
@@ -499,24 +107,20 @@ const Home = () => {
                     outlined
                 />
             </div>
-            {
-                true && (
-                    <div className={cx('result__container', {
-                        _hasResults: results.length > 0,
-                    })}
-                    >
-                        {
-                            trail.map((animationStyles, index) => (
-                                <RecipeListItem
-                                    key={results[index].id}
-                                    recipe={results[index]}
-                                    animationStyles={animationStyles}
-                                />
-                            ))
-                        }
-                    </div>
-                )
-            }
+            <div className={cx('result__container', {
+                _hasResults: results.length > 0,
+            })}
+            >
+                {
+                    trail.map((animationStyles, index) => (
+                        <RecipeListItem
+                            key={results[index].id}
+                            recipe={results[index]}
+                            animationStyles={animationStyles}
+                        />
+                    ))
+                }
+            </div>
         </div>
     );
 };

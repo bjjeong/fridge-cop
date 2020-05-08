@@ -37,13 +37,13 @@ const routes = [
         component: withNavbar(About),
     },
     {
-        path: '/app',
-        key: 'APP',
+        path: '/explore',
+        key: 'EXPLORE',
         component: RenderRoutes,
         routes: [
             {
-                path: '/app',
-                key: 'APP_ROOT',
+                path: '/explore',
+                key: 'EXPLORE_ROOT',
                 exact: true,
                 component: withNavbar(Home),
             },

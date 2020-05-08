@@ -1,28 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { animated } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 import { Card, Button } from '@blueprintjs/core';
+import { capitalize } from '../../../utils/helpers';
 
 const RecipeListItem = ({ recipe, animationStyles }) => {
-    const { image, usedIngredientCount, missedIngredientCount, title } = recipe;
+    const [flipped, setFlipped] = useState(false);
+    const {
+        image, usedIngredientCount, missedIngredientCount,
+        title, usedIngredients, missedIngredients,
+    } = recipe;
+
+    const { transform, opacity } = useSpring({
+        opacity: flipped ? 1 : 0,
+        transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+        config: { mass: 5, tension: 500, friction: 80 },
+    });
+    const flipBack = { opacity: opacity.interpolate((o) => 1 - o), transform };
+    const flipForward = { opacity, transform: transform.interpolate((t) => `${t} rotateX(180deg)`) };
+    const AnimatedCard = animated(Card);
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
     return (
-        <animated.div style={{ ...animationStyles }}>
-            <Card style={styles.container} interactive>
+        <animated.div
+            style={{ ...animationStyles, ...styles.container }}
+            onClick={() => setFlipped(!flipped)}
+        >
+            <AnimatedCard interactive style={{ ...flipBack, ...styles.card, zIndex: 2 }}>
                 <img src={image} alt={title} style={styles.imgContainer} />
-                <div style={styles.topCard}>
+                <div style={styles.topSection}>
                     <h2 style={styles.titleText}>{title}</h2>
                 </div>
-                <div style={styles.bottomCard}>
+                <div style={styles.bottomSection}>
                     <span>
-                        {`You have ${(usedIngredientCount / (usedIngredientCount + missedIngredientCount)) * 100}% of the ingredients!`}
+                        {`You have ${Math.round((usedIngredientCount / (usedIngredientCount + missedIngredientCount)) * 100)}% of the ingredients!`}
                     </span>
                     <Button
+                        text="View Ingredients"
+                        onClick={() => setFlipped(!flipped)}
+                        style={styles.viewButton}
+                        outlined
+                    />
+                    <Button
                         text="View Recipe"
+                        onClick={handleClick}
                         style={styles.viewButton}
                         outlined
                     />
                 </div>
-            </Card>
+            </AnimatedCard>
+            <AnimatedCard interactive style={{ ...flipForward, ...styles.card, overflow: 'scroll' }}>
+                <div style={{ ...styles.topSection, padding: '0' }}>
+                    <h2 style={styles.titleText}>Ingredients</h2>
+                </div>
+                <div style={styles.ingredientsContainer}>
+                    <div style={styles.usedText}>
+                        {
+                            usedIngredients.map((used) => capitalize(used.name)).join(', ')
+                        }
+                    </div>
+                    <div style={styles.missedText}>
+                        {
+                            missedIngredients.map((missed) => capitalize(missed.name)).join(', ')
+                        }
+                    </div>
+                </div>
+            </AnimatedCard>
         </animated.div>
     );
 };
@@ -30,17 +77,22 @@ const RecipeListItem = ({ recipe, animationStyles }) => {
 const styles = {};
 
 styles.container = {
-    backgroundColor: '#fff',
+    width: 300,
+    height: 280,
+    margin: '10px 10px 50px',
+};
+
+styles.card = {
+    position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    borderRadius: 20,
-    position: 'relative',
-    width: 300,
-    margin: '10px 10px 50px',
-    cursor: 'pointer',
+    backgroundColor: '#fff',
     padding: 5,
+    width: 300,
+    height: 280,
+    borderRadius: 20,
 };
 
 styles.imgContainer = {
@@ -56,7 +108,7 @@ styles.imgContainer = {
     border: '5px solid #fff',
 };
 
-styles.topCard = {
+styles.topSection = {
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: '#ffe1d5',
@@ -67,7 +119,7 @@ styles.topCard = {
     borderTopRightRadius: 18,
 };
 
-styles.bottomCard = {
+styles.bottomSection = {
     fontFamily: 'Maison,sans-serif',
     display: 'flex',
     flexDirection: 'column',
@@ -75,6 +127,14 @@ styles.bottomCard = {
     alignItems: 'center',
     padding: '20px 10px 10px',
     width: '100%',
+};
+
+styles.ingredientsContainer = {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    padding: 5,
 };
 
 styles.viewButton = {
@@ -88,6 +148,16 @@ styles.titleText = {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
+};
+
+styles.usedText = {
+    fontFamily: 'Maison,sans-serif',
+    color: '#38783B',
+};
+
+styles.missedText = {
+    fontFamily: 'Maison,sans-serif',
+    color: '#5c7080',
 };
 
 RecipeListItem.propTypes = {
