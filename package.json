@@ -1,4 +1,5 @@
 {
+  "homepage": "http://bjjeong.github.io/fridge-cop",
   "name": "fridge-cop",
   "version": "0.1.0",
   "private": true,
@@ -24,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +46,7 @@
   },
   "devDependencies": {
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3"
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "gh-pages": "^2.2.0"
   }
 }
