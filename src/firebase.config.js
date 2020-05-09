@@ -5,7 +5,7 @@ import 'firebase/firebase-database';
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const firebaseConfig = {
-    apiKey: 'AIzaSyDiUO6RDwCTvM4OSAiByVRenpU852YA1sA',
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: 'fridge-cop-5fd76.firebaseapp.com',
     databaseURL: 'https://fridge-cop-5fd76.firebaseio.com',
     projectId: 'fridge-cop-5fd76',
