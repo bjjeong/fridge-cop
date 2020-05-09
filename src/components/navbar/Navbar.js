@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Navbar as Nav, AnchorButton, Icon } from '@blueprintjs/core';
-import iconLinkedin from './icon-linkedin.svg';
-import iconGitHub from './icon-github.svg';
-import iconInstagram from './icon-instagram.svg';
+import { Navbar as Nav, AnchorButton, Icon, Popover, Menu, MenuItem, Button } from '@blueprintjs/core';
+import * as firebase from 'firebase';
+
+import iconLinkedin from '../../images/icon-linkedin.svg';
+import iconInstagram from '../../images/icon-instagram.svg';
+import iconLemon from '../../images/icon-lemon.svg';
+import Signup from '../modals/Signup';
+import Login from '../modals/Login';
+import { AuthContext } from '../../App';
 
 const Navbar = () => {
+    const Auth = useContext(AuthContext);
+
+    const [signupOpen, setSignupOpen] = useState(false);
+    const [loginOpen, setLoginOpen] = useState(false);
+
+    const handleSignupClose = () => setSignupOpen(false);
+
+    const handleSignupOpen = () => setSignupOpen(true);
+
+    const handleLoginClose = () => setLoginOpen(false);
+
+    const handleLoginOpen = () => setLoginOpen(true);
+
+    const handleLogOut = async () => {
+        try {
+            await firebase.auth().signOut();
+            Auth.setUser(null);
+        } catch (error) {
+            // Display the error
+        }
+    };
+
     return (
         <div>
             <Nav style={styles.container}>
@@ -30,21 +57,53 @@ const Navbar = () => {
                         minimal
                     />
                     <AnchorButton
-                        href="https://github.com/bjjeong/"
-                        target="_blank"
-                        title="GitHub"
-                        icon={<img alt="GitHub" src={iconGitHub} />}
-                        minimal
-                    />
-                    <AnchorButton
                         href="https://www.instagram.com/bjjeong/"
                         target="_blank"
                         title="Instagram"
                         icon={<img alt="Instagram" src={iconInstagram} />}
                         minimal
                     />
+                    {
+                        Auth.user ? (
+                            <Popover>
+                                <Button
+                                    icon={<img alt="User" src={Auth.user.photoURL || iconLemon} style={styles.photo} />}
+                                    minimal
+                                />
+                                <Menu key="user">
+                                    <MenuItem
+                                        text="Log Out"
+                                        onClick={handleLogOut}
+                                    />
+                                </Menu>
+                            </Popover>
+                        ) : (
+                            <>
+                                <Button
+                                    style={styles.buttonText}
+                                    onClick={handleSignupOpen}
+                                    text="sign up"
+                                    minimal
+                                />
+                                <Button
+                                    style={styles.buttonText}
+                                    onClick={handleLoginOpen}
+                                    text="log in"
+                                    minimal
+                                />
+                            </>
+                        )
+                    }
                 </Nav.Group>
             </Nav>
+            <Signup
+                isOpen={signupOpen}
+                onClose={handleSignupClose}
+            />
+            <Login
+                isOpen={loginOpen}
+                onClose={handleLoginClose}
+            />
         </div>
     );
 };
@@ -64,6 +123,20 @@ styles.navText = {
     fontWeight: '600',
     color: '#004968',
     fontFamily: 'Maison,sans-serif',
+};
+
+styles.buttonText = {
+    fontSize: 'calc(4px + 1vmin)',
+    fontWeight: '600',
+    color: '#004968',
+    fontFamily: 'Maison,sans-serif',
+};
+
+styles.photo = {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    objectFit: 'cover',
 };
 
 export default Navbar;

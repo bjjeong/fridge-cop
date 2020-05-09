@@ -1,10 +1,19 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { showLoader, hideLoader, showAlert, hideAlert } from '../actions/interfaceActions';
+import {
+    showLoader,
+    hideLoader,
+    showAlert,
+    hideAlert,
+} from '../actions/interfaceActions';
 
 const initialState = {
     alert: null,
     loading: {
         recipeView: false,
+    },
+    modal: {
+        component: null,
+        modalProps: null,
     },
 };
 
