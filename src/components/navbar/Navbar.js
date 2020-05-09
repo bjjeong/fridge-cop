@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Navbar as Nav, AnchorButton, Icon } from '@blueprintjs/core';
-import iconLinkedin from './icon-linkedin.svg';
-import iconGitHub from './icon-github.svg';
-import iconInstagram from './icon-instagram.svg';
+import { Navbar as Nav, AnchorButton, Icon, Popover, Menu, MenuItem, Button } from '@blueprintjs/core';
+
+import iconLinkedin from '../../images/icon-linkedin.svg';
+import iconGitHub from '../../images/icon-github.svg';
+import iconInstagram from '../../images/icon-instagram.svg';
+import iconLemon from '../../images/icon-lemon.svg';
+import SignUp from '../modals/SignUp';
 
 const Navbar = () => {
+    const [authOpen, setAuthOpen] = useState(false);
+
+    const handleAuthClose = () => setAuthOpen(false);
+
+    const handleAuthOpen = () => setAuthOpen(true);
+
     return (
         <div>
             <Nav style={styles.container}>
@@ -43,8 +52,24 @@ const Navbar = () => {
                         icon={<img alt="Instagram" src={iconInstagram} />}
                         minimal
                     />
+                    <Popover>
+                        <Button
+                            icon={<img alt="User" src={iconLemon} />}
+                            minimal
+                        />
+                        <Menu key="user">
+                            <MenuItem
+                                text="Hello"
+                                onClick={handleAuthOpen}
+                            />
+                        </Menu>
+                    </Popover>
                 </Nav.Group>
             </Nav>
+            <SignUp
+                isOpen={authOpen}
+                onClose={handleAuthClose}
+            />
         </div>
     );
 };

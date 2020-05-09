@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import withNavbar from './features/withNavbar';
 import Home from './pages/Home/Home';
-import About from './pages/About';
 import RecipeView from './pages/RecipeView/RecipeView';
 
 function RouteWithSubRoutes(route) {
@@ -30,12 +29,6 @@ const routes = [
         key: 'ROOT',
         exact: true,
         component: withNavbar(Home),
-    },
-    {
-        path: '/about',
-        key: 'ABOUT',
-        exact: true,
-        component: withNavbar(About),
     },
     {
         path: '/recipes',
