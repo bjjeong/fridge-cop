@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar as Nav, AnchorButton, Icon, Popover, Menu, MenuItem, Button } from '@blueprintjs/core';
 
 import iconLinkedin from '../../images/icon-linkedin.svg';
-import iconGitHub from '../../images/icon-github.svg';
 import iconInstagram from '../../images/icon-instagram.svg';
 import iconLemon from '../../images/icon-lemon.svg';
 import Signup from '../modals/Signup';
 import Login from '../modals/Login';
+import { AuthContext } from '../../App';
 
 const Navbar = () => {
+    const Auth = useContext(AuthContext);
+
     const [signupOpen, setSignupOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
 
@@ -37,18 +39,11 @@ const Navbar = () => {
                     </Nav.Heading>
                 </Nav.Group>
                 <Nav.Group align="right">
-                    {/* <AnchorButton
+                    <AnchorButton
                         href="https://www.linkedin.com/in/bjjeong/"
                         target="_blank"
                         title="LinkedIn"
                         icon={<img alt="LinkedIn" src={iconLinkedin} />}
-                        minimal
-                    />
-                    <AnchorButton
-                        href="https://github.com/bjjeong/"
-                        target="_blank"
-                        title="GitHub"
-                        icon={<img alt="GitHub" src={iconGitHub} />}
                         minimal
                     />
                     <AnchorButton
@@ -57,31 +52,37 @@ const Navbar = () => {
                         title="Instagram"
                         icon={<img alt="Instagram" src={iconInstagram} />}
                         minimal
-                    /> */}
-                    <Button
-                        style={styles.navText}
-                        onClick={handleSignupOpen}
-                        text="sign up"
-                        minimal
                     />
-                    <Button
-                        style={styles.navText}
-                        onClick={handleLoginOpen}
-                        text="log in"
-                        minimal
-                    />
-                    <Popover>
-                        <Button
-                            icon={<img alt="User" src={iconLemon} />}
-                            minimal
-                        />
-                        <Menu key="user">
-                            <MenuItem
-                                text="About"
-                                // onClick={handleSignupOpen}
-                            />
-                        </Menu>
-                    </Popover>
+                    {
+                        Auth.user ? (
+                            <Popover>
+                                <Button
+                                    icon={<img alt="User" src={iconLemon} />}
+                                    minimal
+                                />
+                                <Menu key="user">
+                                    <MenuItem
+                                        text="About"
+                                    />
+                                </Menu>
+                            </Popover>
+                        ) : (
+                            <>
+                                <Button
+                                    style={styles.buttonText}
+                                    onClick={handleSignupOpen}
+                                    text="sign up"
+                                    minimal
+                                />
+                                <Button
+                                    style={styles.buttonText}
+                                    onClick={handleLoginOpen}
+                                    text="log in"
+                                    minimal
+                                />
+                            </>
+                        )
+                    }
                 </Nav.Group>
             </Nav>
             <Signup
@@ -108,6 +109,16 @@ styles.navText = {
     flexDirection: 'row',
     alignItems: 'center',
     fontSize: 'calc(10px + 1vmin)',
+    fontWeight: '600',
+    color: '#004968',
+    fontFamily: 'Maison,sans-serif',
+};
+
+styles.buttonText = {
+    // display: 'flex',
+    // flexDirection: 'row',
+    // alignItems: 'center',
+    fontSize: 'calc(4px + 1vmin)',
     fontWeight: '600',
     color: '#004968',
     fontFamily: 'Maison,sans-serif',
