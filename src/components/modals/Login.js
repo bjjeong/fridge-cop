@@ -137,6 +137,10 @@ const Login = ({ isOpen, onClose }) => {
                                     text="Sign Up"
                                     // onClick={() => setFormType(isLogin ? 'signup' : 'login')}
                                     minimal
+                                    style={{
+                                        fontSize: 'calc(8px + 0.75vmin)',
+                                        fontFamily: 'Maison,sans-serif',
+                                    }}
                                 />
                             </span>
                         </>
@@ -157,6 +161,7 @@ styles.dialogContainer = {
     paddingBottom: 0,
     backgroundColor: '#fff',
     height: '50vh',
+    width: 'calc(140px + 50vmin)',
 };
 
 styles.innerContainer = {
@@ -185,11 +190,15 @@ styles.logInText = {
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: '4vmin',
+    fontSize: 'calc(8px + 0.75vmin)',
+    fontFamily: 'Maison,sans-serif',
 };
 
 styles.authButton = {
     padding: '10px 15px',
-    width: '50%',
+    width: 'calc(150px + 10vmin)',
+    fontSize: 'calc(8px + 0.75vmin)',
+    fontFamily: 'Maison,sans-serif',
 };
 
 styles.input = {
