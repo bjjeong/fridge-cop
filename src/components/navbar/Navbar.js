@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar as Nav, AnchorButton, Icon, Popover, Menu, MenuItem, Button } from '@blueprintjs/core';
+import * as firebase from 'firebase';
 
 import iconLinkedin from '../../images/icon-linkedin.svg';
 import iconInstagram from '../../images/icon-instagram.svg';
@@ -22,6 +23,15 @@ const Navbar = () => {
     const handleLoginClose = () => setLoginOpen(false);
 
     const handleLoginOpen = () => setLoginOpen(true);
+
+    const handleLogOut = async () => {
+        try {
+            await firebase.auth().signOut();
+            Auth.setUser(null);
+        } catch (error) {
+            // Display the error
+        }
+    };
 
     return (
         <div>
@@ -57,12 +67,13 @@ const Navbar = () => {
                         Auth.user ? (
                             <Popover>
                                 <Button
-                                    icon={<img alt="User" src={iconLemon} />}
+                                    icon={<img alt="User" src={Auth.user.photoURL || iconLemon} style={styles.photo} />}
                                     minimal
                                 />
                                 <Menu key="user">
                                     <MenuItem
-                                        text="About"
+                                        text="Log Out"
+                                        onClick={handleLogOut}
                                     />
                                 </Menu>
                             </Popover>
@@ -115,13 +126,17 @@ styles.navText = {
 };
 
 styles.buttonText = {
-    // display: 'flex',
-    // flexDirection: 'row',
-    // alignItems: 'center',
     fontSize: 'calc(4px + 1vmin)',
     fontWeight: '600',
     color: '#004968',
     fontFamily: 'Maison,sans-serif',
+};
+
+styles.photo = {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    objectFit: 'cover',
 };
 
 export default Navbar;
