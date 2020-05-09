@@ -54,7 +54,7 @@ const RecipeView = () => {
                     target="_blank"
                     style={styles.sourceButton}
                     text="Source"
-                    icon={<Icon icon="link" iconSize="calc(5px + 1vmin)" />}
+                    icon={<Icon icon="globe" iconSize="calc(5px + 1vmin)" />}
                     minimal
                 />
                 <div style={styles.recipeInfoContainer}>
@@ -82,7 +82,6 @@ styles.container = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    // justifyContent: 'center',
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#ffe1d5',
