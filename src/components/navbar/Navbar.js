@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 import iconLinkedin from '../../images/icon-linkedin.svg';
 import iconInstagram from '../../images/icon-instagram.svg';
 import iconLemon from '../../images/icon-lemon.svg';
-import Signup from '../modals/Signup';
+import Signup from '../modals/SignUp';
 import Login from '../modals/Login';
 import { AuthContext } from '../../App';
 
