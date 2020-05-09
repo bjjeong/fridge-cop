@@ -9,10 +9,10 @@ import './App.css';
 export const AuthContext = React.createContext(null);
 
 const App = () => {
-    const [isLoggedIn, setLoggedIn] = useState(false);
+    const [user, setUser] = useState(false);
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, setLoggedIn }}>
+        <AuthContext.Provider value={{ user, setUser }}>
             <Provider store={store}>
                 <BrowserRouter>
                     {

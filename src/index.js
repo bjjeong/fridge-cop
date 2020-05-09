@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
 
-import firebaseConfig from './firebase.config';
+import { firebaseConfig } from './firebase.config';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

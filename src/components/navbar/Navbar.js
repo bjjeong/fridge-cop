@@ -6,14 +6,20 @@ import iconLinkedin from '../../images/icon-linkedin.svg';
 import iconGitHub from '../../images/icon-github.svg';
 import iconInstagram from '../../images/icon-instagram.svg';
 import iconLemon from '../../images/icon-lemon.svg';
-import SignUp from '../modals/SignUp';
+import Signup from '../modals/Signup';
+import Login from '../modals/Login';
 
 const Navbar = () => {
-    const [authOpen, setAuthOpen] = useState(false);
+    const [signupOpen, setSignupOpen] = useState(false);
+    const [loginOpen, setLoginOpen] = useState(false);
 
-    const handleAuthClose = () => setAuthOpen(false);
+    const handleSignupClose = () => setSignupOpen(false);
 
-    const handleAuthOpen = () => setAuthOpen(true);
+    const handleSignupOpen = () => setSignupOpen(true);
+
+    const handleLoginClose = () => setLoginOpen(false);
+
+    const handleLoginOpen = () => setLoginOpen(true);
 
     return (
         <div>
@@ -31,7 +37,7 @@ const Navbar = () => {
                     </Nav.Heading>
                 </Nav.Group>
                 <Nav.Group align="right">
-                    <AnchorButton
+                    {/* <AnchorButton
                         href="https://www.linkedin.com/in/bjjeong/"
                         target="_blank"
                         title="LinkedIn"
@@ -51,6 +57,18 @@ const Navbar = () => {
                         title="Instagram"
                         icon={<img alt="Instagram" src={iconInstagram} />}
                         minimal
+                    /> */}
+                    <Button
+                        style={styles.navText}
+                        onClick={handleSignupOpen}
+                        text="sign up"
+                        minimal
+                    />
+                    <Button
+                        style={styles.navText}
+                        onClick={handleLoginOpen}
+                        text="log in"
+                        minimal
                     />
                     <Popover>
                         <Button
@@ -59,16 +77,20 @@ const Navbar = () => {
                         />
                         <Menu key="user">
                             <MenuItem
-                                text="Hello"
-                                onClick={handleAuthOpen}
+                                text="About"
+                                // onClick={handleSignupOpen}
                             />
                         </Menu>
                     </Popover>
                 </Nav.Group>
             </Nav>
-            <SignUp
-                isOpen={authOpen}
-                onClose={handleAuthClose}
+            <Signup
+                isOpen={signupOpen}
+                onClose={handleSignupClose}
+            />
+            <Login
+                isOpen={loginOpen}
+                onClose={handleLoginClose}
             />
         </div>
     );

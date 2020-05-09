@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
 import { FormGroup, InputGroup, Icon, Dialog, Button } from '@blueprintjs/core';
 import * as firebase from 'firebase';
 
@@ -8,9 +7,8 @@ import { AuthContext } from '../../App';
 import { googleProvider } from '../../firebase.config';
 import iconGoogle from '../../images/google.svg';
 
-const Signup = ({ isOpen, onClose }) => {
+const Login = ({ isOpen, onClose }) => {
     const Auth = useContext(AuthContext);
-    const dispatch = useDispatch();
 
     const [showForm, setShowForm] = useState(false);
     const [email, setEmail] = useState('');
@@ -41,7 +39,7 @@ const Signup = ({ isOpen, onClose }) => {
         try {
             const result = await firebase
                 .auth()
-                .createUserWithEmailAndPassword(email, password);
+                .signInWithEmailAndPassword(email, password);
 
             if (result.user) {
                 Auth.setUser(result.user);
@@ -65,7 +63,7 @@ const Signup = ({ isOpen, onClose }) => {
                 {
                     showForm ? (
                         <>
-                            <h2 style={styles.headerText}>Sign Up with Email</h2>
+                            <h2 style={styles.headerText}>Log In with Email</h2>
                             <p style={styles.subText}>Enter your email address to set up an account.</p>
                             <FormGroup
                                 label="Email"
@@ -98,7 +96,7 @@ const Signup = ({ isOpen, onClose }) => {
                                 style={{ marginBottom: '2vmin' }}
                                 type="submit"
                                 onClick={handleSubmit}
-                                text="Create Account"
+                                text="Log In"
                                 intent="primary"
                                 large
                             />
@@ -114,11 +112,11 @@ const Signup = ({ isOpen, onClose }) => {
                         </>
                     ) : (
                         <>
-                            <h2 style={styles.headerText}>Sign Up</h2>
-                            <p style={styles.subText}>Create an account to save recipes and the ingredients you already have at home.</p>
+                            <h2 style={styles.headerText}>Log In</h2>
+                            <p style={styles.subText}>Log in to save recipes and the ingredients you already have at home.</p>
                             <Button
                                 onClick={googleSignIn}
-                                text="Sign up with Google"
+                                text="Log in with Google"
                                 alignText="left"
                                 icon={<img src={iconGoogle} alt="Google" />}
                                 style={{ ...styles.authButton, marginBottom: 10 }}
@@ -126,18 +124,18 @@ const Signup = ({ isOpen, onClose }) => {
                             />
                             <Button
                                 onClick={() => setShowForm(true)}
-                                text="Sign up with Email"
+                                text="Log in with Email"
                                 alignText="left"
                                 icon={<Icon icon="envelope" iconSize={20} />}
                                 style={styles.authButton}
                                 outlined
                             />
                             <span style={styles.logInText}>
-                                Already have an account?
+                                Don't have an account yet?
                                 <Button
                                     intent="primary"
-                                    text="Log In"
-                                    onClick={() => {}}
+                                    text="Sign Up"
+                                    // onClick={() => setFormType(isLogin ? 'signup' : 'login')}
                                     minimal
                                 />
                             </span>
@@ -200,9 +198,9 @@ styles.input = {
     width: '100%',
 };
 
-Signup.propTypes = {
+Login.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
 };
 
-export default Signup;
+export default Login;
