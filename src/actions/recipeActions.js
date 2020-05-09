@@ -1,13 +1,21 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchRecipes, fetchRecipeById } from '../api/recipeAPI';
+import { showLoader, hideLoader, showAlert } from './interfaceActions';
 
 export const clearRecipes = createAction('CLEAR_RECIPES');
 
 export const getRecipeById = createAsyncThunk(
     'GET_RECIPE_BY_ID',
-    async (recipeId) => {
-        const response = await fetchRecipeById(recipeId);
-        return response.data;
+    async (recipeId, { dispatch }) => {
+        try {
+            dispatch(showLoader('recipeView'));
+            const response = await fetchRecipeById(recipeId);
+            return response.data;
+        } catch (e) {
+            dispatch(showAlert('Something went wrong while fetching the recipe'));
+        } finally {
+            dispatch(hideLoader('recipeView'));
+        }
     },
 );
 

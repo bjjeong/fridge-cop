@@ -4,6 +4,7 @@ import { animated, useSpring } from 'react-spring';
 import { Link } from 'react-router-dom';
 import { Card, Button } from '@blueprintjs/core';
 import { capitalize } from '../../../utils/helpers';
+import Image from '../../../components/image/Image';
 
 const RecipeListItem = ({ recipe, animationStyles }) => {
     const [flipped, setFlipped] = useState(false);
@@ -27,7 +28,7 @@ const RecipeListItem = ({ recipe, animationStyles }) => {
             onClick={() => setFlipped(!flipped)}
         >
             <AnimatedCard interactive style={{ ...flipBack, ...styles.card, zIndex: flipped ? 0 : 2 }}>
-                <img src={image} alt={title} style={styles.imgContainer} />
+                <Image src={image} alt={title} style={styles.imgContainer} />
                 <div style={styles.topSection}>
                     <h2 style={styles.titleText}>{title}</h2>
                 </div>

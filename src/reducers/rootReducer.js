@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 
 import recipeReducer from './recipeReducer';
-// import ErrorReducer from './ErrorReducer';
+import interfaceReducer from './interfaceReducer';
 
 const RootReducer = combineReducers({
     recipes: recipeReducer,
+    interface: interfaceReducer,
 });
 
 export default RootReducer;

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Spinner, Card, Button, AnchorButton, Icon } from '@blueprintjs/core';
+import { Spinner, Card, Button, AnchorButton, Icon, Classes } from '@blueprintjs/core';
 
 import { getRecipeById } from '../../actions/recipeActions';
 import { removeHTMLTags } from '../../utils/helpers';
+import Image from '../../components/image/Image';
 
 const Meta = ({ title, description }) => {
     return (
@@ -17,22 +18,23 @@ const Meta = ({ title, description }) => {
     );
 };
 
-const RecipeView = (props) => {
-    const [loading, setLoading] = useState(true);
+Meta.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+};
 
+const RecipeView = () => {
     const dispatch = useDispatch();
     const recipe = useSelector((state) => state.recipes.recipeInfo);
+    const loading = useSelector((state) => state.interface.loading.recipeView);
     const { id } = useParams();
 
     useEffect(() => {
-        (async function getRecipe() {
-            await dispatch(getRecipeById(id));
-        }());
-        setLoading(false);
+        dispatch(getRecipeById(id));
     }, [id, dispatch]);
 
     if (loading) {
-        return null;
+        return <Spinner intent="warning" />;
     }
 
     return (
@@ -45,11 +47,8 @@ const RecipeView = (props) => {
                     minimal
                 />
             </Link>
-            {/* {
-                loading ? <Spinner /> : null
-            } */}
-            <Card elevation={2} style={styles.card}>
-                <img src={recipe.image} alt={recipe.title} style={styles.imgContainer} />
+            <Card className={loading && Classes.SKELETON} elevation={2} style={styles.card}>
+                <Image src={recipe.image} alt={recipe.title} style={styles.imgContainer} />
                 <AnchorButton
                     href={recipe.sourceUrl}
                     target="_blank"
@@ -83,6 +82,7 @@ styles.container = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
+    // justifyContent: 'center',
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#ffe1d5',
